@@ -16,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.adminblinkitclone.R
 import com.example.adminblinkitclone.activities.AdminMainActivity
 import com.example.adminblinkitclone.databinding.FragmentOTPBinding
-import com.example.adminblinkitclone.models.Users
+import com.example.adminblinkitclone.models.Admins
 import com.example.adminblinkitclone.util.Utils
 import com.example.adminblinkitclone.viewmodels.AuthViewModel
 import kotlinx.coroutines.launch
@@ -70,11 +70,7 @@ class OTPFragment : Fragment() {
 
     private fun verifyOtp(otp: String) {
         Log.d("debugging", "userId is:: ${Utils.getUserCurrentId()}")
-        val user = Users(
-            uId = null,
-            userPhoneNumber = userNumber,
-            userAddress = null
-        )
+        val user = Admins(adminPhoneNumber = userNumber)
         viewModel.signInWithPhoneAuthCredential(
             otp, userNumber, user, //Parameters of signInWith.. method
             {

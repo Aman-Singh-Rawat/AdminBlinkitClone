@@ -2,7 +2,7 @@ package com.example.adminblinkitclone.viewmodels
 
 import android.app.Activity
 import androidx.lifecycle.ViewModel
-import com.example.adminblinkitclone.models.Users
+import com.example.adminblinkitclone.models.Admins
 import com.example.adminblinkitclone.util.Utils
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
@@ -56,7 +56,7 @@ class AuthViewModel: ViewModel() {
     }
 
     fun signInWithPhoneAuthCredential(
-        otp: String, userNumber: String, user: Users,
+        otp: String, userNumber: String, user: Admins,
         onSuccess: (String) -> Unit, onFailure: (String) -> Unit) {
 
         val credential = PhoneAuthProvider.getCredential(_verificationId.value.toString(), otp)
@@ -69,8 +69,8 @@ class AuthViewModel: ViewModel() {
                     user.uId = Utils.getUserCurrentId()
                     if (user.uId != null) {
                         FirebaseDatabase.getInstance("https://blinkit-clone-b8338-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                            .getReference("AllUsers")
-                            .child("Users")
+                            .getReference("Admins")
+                            .child("AdminInfo")
                             .child(user.uId!!)
                             .setValue(user)
                             .addOnCompleteListener { dbTask ->
