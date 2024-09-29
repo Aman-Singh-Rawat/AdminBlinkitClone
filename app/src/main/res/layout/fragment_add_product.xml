@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Quantity(1kg, 1ltr)"
-                android:inputType="text" />
+                android:inputType="numberDecimal" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -153,7 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Price(in rupees)"
-                android:inputType="text" />
+                android:inputType="numberDecimal" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,7 +179,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="no. of Stock"
-                android:inputType="text" />
+                android:inputType="numberDecimal" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -288,6 +288,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
                 android:id="@+id/btnAddProduct"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_alignParentBottom="true"
@@ -297,7 +298,7 @@
                 android:backgroundTint="@color/yellow"
                 android:text="Add Product"
                 android:textColor="@color/white"
-                app:cornerRadius="@dimen/_9sdp" />
+                app:cornerRadius="@dimen/_9sdp"  />
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
