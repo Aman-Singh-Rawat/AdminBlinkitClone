@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:text="State"
+    android:background="@color/white"
+    android:padding="@dimen/_14sdp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    style="?attr/textAppearanceBodyMedium"
+    android:drawablePadding="@dimen/_8sdp"
+    app:drawableEndCompat="@drawable/ic_navigate_next" />
