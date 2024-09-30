@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.adminblinkitclone.R
 import com.example.adminblinkitclone.adapters.CategoryAdapter
 import com.example.adminblinkitclone.adapters.ProductAdapter
 import com.example.adminblinkitclone.databinding.FragmentHomeBinding
+import com.example.adminblinkitclone.util.Category
 import com.example.adminblinkitclone.util.Constant
 import com.example.adminblinkitclone.viewmodels.AdminViewModel
 import kotlinx.coroutines.launch
@@ -36,14 +36,31 @@ class HomeFragment : Fragment() {
     }
 
     private fun initViews() {
-        binding.rvCategories.adapter = CategoryAdapter(Constant.getCategoryList)
+        binding.rvCategories.adapter = CategoryAdapter(Constant.getCategoryList, ::onCategoryClicked)
+        getAllProducts("All")
+    }
+
+    private fun getAllProducts(category: String) {
         lifecycleScope.launch {
-            viewModel.fetchAllProducts().collect {
+            viewModel.fetchAllProducts(category).collect {
+                if (it.isEmpty()) {
+                    binding.rvProducts.visibility = View.GONE
+                    binding.tvNoProductAdded.visibility = View.VISIBLE
+                } else {
+                    binding.rvProducts.visibility = View.VISIBLE
+                    binding.tvNoProductAdded.visibility = View.GONE
+                }
+
                 binding.rvProducts.adapter = adapterProduct
                 adapterProduct.differ.submitList(it)
             }
         }
     }
+
+    private fun onCategoryClicked(categories: Category) {
+        getAllProducts(categories.category)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
