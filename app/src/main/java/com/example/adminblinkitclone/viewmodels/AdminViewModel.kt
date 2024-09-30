@@ -6,10 +6,17 @@ import androidx.lifecycle.ViewModel
 import com.example.adminblinkitclone.models.Product
 import com.example.adminblinkitclone.util.Utils
 import com.google.firebase.Firebase
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.callbackFlow
 
 class AdminViewModel: ViewModel() {
     private val firebaseStorageInstance = FirebaseStorage.getInstance()
@@ -71,4 +78,24 @@ class AdminViewModel: ViewModel() {
             }
     }
 
+    fun fetchAllProducts(): Flow<List<Product>> = callbackFlow {
+        val db = firebaseDatabaseInstance.getReference("Admins").child("AllProducts")
+
+        val eventListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val products = ArrayList<Product>()
+                for (product in snapshot.children) {
+                    val value = product.getValue(Product::class.java)
+                    if (value != null) products.add(value)
+                }
+                trySend(products)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        db.addValueEventListener(eventListener)
+        awaitClose { db.removeEventListener(eventListener) }
+    }
 }

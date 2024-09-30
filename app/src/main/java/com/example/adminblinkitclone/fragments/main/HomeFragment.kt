@@ -5,12 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.adminblinkitclone.R
 import com.example.adminblinkitclone.adapters.CategoryAdapter
+import com.example.adminblinkitclone.adapters.ProductAdapter
 import com.example.adminblinkitclone.databinding.FragmentHomeBinding
 import com.example.adminblinkitclone.util.Constant
+import com.example.adminblinkitclone.viewmodels.AdminViewModel
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
+    private val viewModel: AdminViewModel by viewModels()
+    private val adapterProduct = ProductAdapter()
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get () = _binding!!
 
@@ -30,6 +37,12 @@ class HomeFragment : Fragment() {
 
     private fun initViews() {
         binding.rvCategories.adapter = CategoryAdapter(Constant.getCategoryList)
+        lifecycleScope.launch {
+            viewModel.fetchAllProducts().collect {
+                binding.rvProducts.adapter = adapterProduct
+                adapterProduct.differ.submitList(it)
+            }
+        }
     }
 
     override fun onDestroyView() {
