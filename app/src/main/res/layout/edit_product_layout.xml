@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glEditProductStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glEditProductEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPleaseFill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Edit Product"
+            android:textColor="@color/yellow"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilProductTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:enabled="false"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:cursorColor="@color/yellow"
+            app:hintTextColor="@color/yellow"
+            app:layout_constraintEnd_toEndOf="@id/glEditProductEnd"
+            app:layout_constraintStart_toStartOf="@id/glEditProductStart"
+            app:layout_constraintTop_toBottomOf="@id/tvPleaseFill">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etProductTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Product Title"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:enabled="false"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:cursorColor="@color/yellow"
+            app:hintTextColor="@color/yellow"
+            app:layout_constraintEnd_toStartOf="@+id/tvUnit"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/glEditProductStart"
+            app:layout_constraintTop_toBottomOf="@id/tilProductTitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Quantity(1kg, 1ltr)"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvUnit"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:enabled="false"
+            android:focusableInTouchMode="false"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:cursorColor="@color/yellow"
+            app:hintTextColor="@color/yellow"
+            app:layout_constraintEnd_toEndOf="@id/glEditProductEnd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvQuantity"
+            app:layout_constraintTop_toBottomOf="@id/tilProductTitle">
+
+            <AutoCompleteTextView
+                android:id="@+id/etProductUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="@dimen/_13sdp"
+                android:text="Unit" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:enabled="false"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:cursorColor="@color/yellow"
+            app:hintTextColor="@color/yellow"
+            app:layout_constraintEnd_toStartOf="@+id/tvNumberStock"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/glEditProductStart"
+            app:layout_constraintTop_toBottomOf="@id/tvQuantity">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Price(in rupees)"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvNumberStock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:enabled="false"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:cursorColor="@color/yellow"
+            app:hintTextColor="@color/yellow"
+            app:layout_constraintEnd_toEndOf="@id/glEditProductEnd"
+            app:layout_constraintStart_toEndOf="@+id/tvPrice"
+            app:layout_constraintTop_toBottomOf="@id/tvUnit">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNumberOfStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="no. of Stock"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvProductType"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:enabled="false"
+            android:focusableInTouchMode="false"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:cursorColor="@color/yellow"
+            app:hintTextColor="@color/yellow"
+            app:layout_constraintEnd_toEndOf="@id/glEditProductEnd"
+            app:layout_constraintStart_toStartOf="@id/glEditProductStart"
+            app:layout_constraintTop_toBottomOf="@id/tvProductCategory"
+            app:startIconDrawable="@drawable/baseline_category_24">
+
+            <AutoCompleteTextView
+                android:id="@+id/etProductType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="@dimen/_13sdp"
+                android:text="Product Type" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvProductCategory"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:enabled="false"
+            android:focusableInTouchMode="false"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:cursorColor="@color/yellow"
+            app:hintTextColor="@color/yellow"
+            app:layout_constraintEnd_toEndOf="@id/glEditProductEnd"
+            app:layout_constraintStart_toStartOf="@id/glEditProductStart"
+            app:layout_constraintTop_toBottomOf="@id/tvNumberStock"
+            app:startIconDrawable="@drawable/baseline_category_24">
+
+            <AutoCompleteTextView
+                android:id="@+id/etProductCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="@dimen/_13sdp"
+                android:text="Product Category" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditProduct"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:backgroundTint="@color/yellow"
+            android:text="Edit"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/_9sdp"
+            app:layout_constraintEnd_toStartOf="@+id/btnSaveProduct"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductType" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveProduct"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:backgroundTint="@color/yellow"
+            android:text="Save"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/_9sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnEditProduct"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductType" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+</ScrollView>

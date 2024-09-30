@@ -9,7 +9,9 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.adminblinkitclone.databinding.ItemViewProductBinding
 import com.example.adminblinkitclone.models.Product
 
-class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val onEditButtonClicked: (Product) -> Unit) :
+    RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+
     inner class ProductViewHolder(val binding: ItemViewProductBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val diffUtil = object : DiffUtil.ItemCallback<Product>() {
@@ -45,6 +47,7 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
             tvProductQuantity.text = "${product.productQuantity}${product.productUnit}"
 
             tvProductPrice.text = "₹${product.productPrice}"
+            tvEdit.setOnClickListener { onEditButtonClicked(product) }
         }
     }
 }

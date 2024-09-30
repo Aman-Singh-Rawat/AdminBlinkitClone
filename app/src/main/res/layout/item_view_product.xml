@@ -70,7 +70,10 @@
                     android:padding="@dimen/_6sdp"
                     android:textColor="@color/green"
                     android:textStyle="bold"
-                    android:background="@drawable/bg_tv_edit"/>
+                    android:background="@drawable/bg_tv_edit"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"/>
 
             </RelativeLayout>
         </LinearLayout>

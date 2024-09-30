@@ -101,4 +101,10 @@ class AdminViewModel: ViewModel() {
         db.addValueEventListener(eventListener)
         awaitClose { db.removeEventListener(eventListener) }
     }
+
+    fun savingUpdateProducts(product: Product) {
+        firebaseDatabaseInstance.getReference("Admins").child("AllProducts/${product.productRandomId}").setValue(product)
+        firebaseDatabaseInstance.getReference("Admins").child("ProductCategory/${product.productRandomId}").setValue(product)
+        firebaseDatabaseInstance.getReference("Admins").child("ProductType/${product.productRandomId}").setValue(product)
+    }
 }
