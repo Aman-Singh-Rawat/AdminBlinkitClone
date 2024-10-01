@@ -57,16 +57,12 @@ class AdminViewModel: ViewModel() {
         firebaseDatabaseInstance.getReference("Admins")
             .child("AllProducts/${product.productRandomId}").setValue(product)
             .addOnSuccessListener {
-                Log.d("debugging", "51")
                 firebaseDatabaseInstance.getReference("Admins")
-                    .child("ProductCategory/${product.productRandomId}")
-                    .setValue(product)
+                    .child("ProductCategory/${product.productCategory}/${product.productRandomId}").setValue(product)
                     .addOnSuccessListener {
-                        Log.d("debugging", "success")
                         firebaseDatabaseInstance.getReference("Admins")
-                            .child("productType/${product.productRandomId}")
-                            .setValue(product).addOnSuccessListener {
-                                Log.d("debugging", "success")
+                            .child("productType/${product.productType}/${product.productRandomId}").setValue(product)
+                            .addOnSuccessListener {
                                 onSuccess.invoke("Your product is Live")
                             }
                             .addOnFailureListener {
@@ -75,7 +71,9 @@ class AdminViewModel: ViewModel() {
                                 onFailure.invoke(error.message.toString())
                             }
                     }
+                    .addOnFailureListener { Log.e("debugging", it.message.toString()) }
             }
+            .addOnFailureListener { Log.e("debugging", it.message.toString()) }
     }
 
     fun fetchAllProducts(category: String): Flow<List<Product>> = callbackFlow {
@@ -104,7 +102,7 @@ class AdminViewModel: ViewModel() {
 
     fun savingUpdateProducts(product: Product) {
         firebaseDatabaseInstance.getReference("Admins").child("AllProducts/${product.productRandomId}").setValue(product)
-        firebaseDatabaseInstance.getReference("Admins").child("ProductCategory/${product.productRandomId}").setValue(product)
-        firebaseDatabaseInstance.getReference("Admins").child("ProductType/${product.productRandomId}").setValue(product)
+        firebaseDatabaseInstance.getReference("Admins").child("ProductCategory/${product.productCategory}/${product.productRandomId}").setValue(product)
+        firebaseDatabaseInstance.getReference("Admins").child("productType/${product.productType}/${product.productRandomId}").setValue(product)
     }
 }
